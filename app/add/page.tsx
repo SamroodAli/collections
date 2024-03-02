@@ -1,6 +1,6 @@
 "use client";
 import { Box, Button, TextField, Typography } from "@mui/material";
-import Link from "next/link";
+import AppLink from "@/components/AppLink";
 import { useForm } from "react-hook-form";
 import BFab from "@/components/BFab";
 import { Close } from "@mui/icons-material";
@@ -21,7 +21,7 @@ export default function Page() {
   const onSubmit = console.log;
 
   return (
-    <Box sx={{ maxWidth: 500, mx: "auto", mt: 2, p: 2 }}>
+    <Box sx={{ maxWidth: 500, mx: "auto", mt: 4, p: 2 }}>
       <form onSubmit={handleSubmit(onSubmit)}>
         <Box width="100%" sx={{ gap: 3, display: "grid", minWidth: "100%" }}>
           <TextField
@@ -60,9 +60,9 @@ export default function Page() {
           </Button>
         </Box>
       </form>
-      <Link href="/">
+      <AppLink href="/">
         <BFab icon={<Close />} />
-      </Link>
+      </AppLink>
     </Box>
   );
 }

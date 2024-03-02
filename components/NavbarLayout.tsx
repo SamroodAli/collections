@@ -15,13 +15,26 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import { APP_NAME } from "@/constants";
+import AppLink from "@/components/AppLink";
 
 interface Props {
   children: React.ReactNode;
 }
 
+interface LinkItem {
+  key: string;
+  label: string;
+  href: string;
+}
+
 const drawerWidth = 240;
-const navItems: string[] = ["add"];
+const navItems: LinkItem[] = [
+  {
+    key: "report",
+    label: "Report",
+    href: "/report",
+  },
+];
 
 export default function NavbarLayout({ children }: Props) {
   const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -32,16 +45,20 @@ export default function NavbarLayout({ children }: Props) {
 
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
-      <Typography variant="h6" sx={{ my: 2 }}>
-        {APP_NAME}
-      </Typography>
+      <AppLink href="/">
+        <Typography variant="h6" sx={{ my: 2 }}>
+          {APP_NAME}
+        </Typography>
+      </AppLink>
       <Divider />
       <List>
         {navItems.map((item) => (
-          <ListItem key={item} disablePadding>
-            <ListItemButton sx={{ textAlign: "center" }}>
-              <ListItemText primary={item} />
-            </ListItemButton>
+          <ListItem key={item.key} disablePadding>
+            <AppLink href={item.href}>
+              <ListItemButton sx={{ textAlign: "center" }}>
+                <ListItemText primary={item.label} />
+              </ListItemButton>
+            </AppLink>
           </ListItem>
         ))}
       </List>
@@ -62,14 +79,21 @@ export default function NavbarLayout({ children }: Props) {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            {APP_NAME}
-          </Typography>
+
+          <Box sx={{ flexGrow: 1, flex: 1 }}>
+            <AppLink href="/">
+              <ListItemText>
+                <Typography variant="h6" component="div">
+                  {APP_NAME}
+                </Typography>
+              </ListItemText>
+            </AppLink>
+          </Box>
           <Box sx={{ display: { xs: "none", sm: "block" } }}>
             {navItems.map((item) => (
-              <Button key={item} sx={{ color: "#fff" }}>
-                {item}
-              </Button>
+              <AppLink href={item.href} key={item.key}>
+                <Button sx={{ color: "#fff" }}>{item.label}</Button>
+              </AppLink>
             ))}
           </Box>
         </Toolbar>
