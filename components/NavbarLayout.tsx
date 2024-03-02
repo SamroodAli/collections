@@ -21,7 +21,7 @@ interface Props {
 }
 
 const drawerWidth = 240;
-const navItems: string[] = [];
+const navItems: string[] = ["add"];
 
 export default function NavbarLayout({ children }: Props) {
   const [mobileOpen, setMobileOpen] = React.useState(false);
