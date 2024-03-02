@@ -7,7 +7,7 @@ import AppLink from "@/components/AppLink";
 export default function ButtonAppBar() {
   return (
     <Box>
-      <AppLink href="/add">
+      <AppLink href="/collections/add">
         <BFab icon={<AddIcon />} />
       </AppLink>
     </Box>

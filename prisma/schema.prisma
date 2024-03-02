@@ -12,3 +12,41 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+enum Role {
+  SuperAdmin
+  Admin
+  User
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  name       String
+  role       Role
+  Collection Collection[]
+  Tenant     Tenant?
+}
+
+model Tenant {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  room      Int
+
+  user   User @relation(fields: [userId], references: [id])
+  userId Int  @unique
+}
+
+model Collection {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  date      DateTime
+  type      String
+
+  user   User @relation(fields: [userId], references: [id])
+  userId Int
+}

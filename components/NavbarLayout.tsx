@@ -34,6 +34,16 @@ const navItems: LinkItem[] = [
     label: "Report",
     href: "/report",
   },
+  {
+    key: "newTenant",
+    label: "Add new Tenant",
+    href: "/tenants/add",
+  },
+  {
+    key: "newCollection",
+    label: "Add new Collection",
+    href: "/collections/add",
+  },
 ];
 
 export default function NavbarLayout({ children }: Props) {
