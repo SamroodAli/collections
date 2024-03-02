@@ -16,12 +16,14 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import { APP_NAME } from "@/constants";
 
-interface Props {}
+interface Props {
+  children: React.ReactNode;
+}
 
 const drawerWidth = 240;
 const navItems: string[] = [];
 
-export default function AppNavbar(props: Props) {
+export default function NavbarLayout({ children }: Props) {
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
   const handleDrawerToggle = () => {
@@ -91,6 +93,10 @@ export default function AppNavbar(props: Props) {
           {drawer}
         </Drawer>
       </nav>
+      <Box component="main">
+        <Toolbar />
+        {children}
+      </Box>
     </Box>
   );
 }

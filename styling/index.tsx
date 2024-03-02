@@ -3,7 +3,6 @@ import React from "react";
 import { Roboto } from "next/font/google";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v13-appRouter";
-import CssBaseline from "@mui/material/CssBaseline";
 
 const roboto = Roboto({
   weight: ["300", "400", "500", "700"],
@@ -24,7 +23,6 @@ export interface Props {
 export default function StylingProvider({ children }: Props) {
   return (
     <AppRouterCacheProvider>
-      <CssBaseline />
       <ThemeProvider theme={theme}>{children}</ThemeProvider>
     </AppRouterCacheProvider>
   );

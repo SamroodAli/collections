@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import StylingProvider from "@/styling";
-import AppNavbar from "@/components/AppNavbar";
+import NavbarLayout from "@/components/NavbarLayout";
 
 export const metadata: Metadata = {
   title: "Collections app",
@@ -23,8 +23,9 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <StylingProvider>
-          <AppNavbar />
-          {children}
+          <main>
+            <NavbarLayout>{children}</NavbarLayout>
+          </main>
         </StylingProvider>
       </body>
     </html>
