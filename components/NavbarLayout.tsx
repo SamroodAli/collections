@@ -93,7 +93,7 @@ export default function NavbarLayout({ children }: Props) {
           {drawer}
         </Drawer>
       </nav>
-      <Box component="main">
+      <Box component="main" width="100%">
         <Toolbar />
         {children}
       </Box>
